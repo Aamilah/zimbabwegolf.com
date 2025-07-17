@@ -1,0 +1,836 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --green: #68d362;
+  --gold: #ffc711;
+  --red: #e84949;
+  --black: #1f1c1c;
+  --white: #ffffff;
+  --lightgrey: #f5f5f5;
+  --darkgrey: #b8adaf;
+}
+body {
+  @apply bg-white overflow-x-hidden m-0 p-0;
+  font-family: 'Roboto';
+}
+a {
+  @apply no-underline transition-all duration-[0.3s] ease-[ease];
+}
+.green-bg {
+  @apply bg-[color:var(--green)] text-[white];
+}
+.gold-bg {
+  @apply bg-[color:var(--gold)] text-[white];
+}
+.red-bg {
+  @apply bg-[color:var(--red)] text-[white];
+}
+.black-bg {
+  @apply bg-[color:var(--black)] text-[white];
+}
+.grey-bg {
+  @apply bg-[color:var(--grey)] text-[white];
+}
+.white-bg {
+  @apply bg-[color:var(--white)] text-[color:var(--black)];
+}
+.navbar {
+  @apply sticky z-[1000] flex justify-between items-center bg-white pl-10 pr-10 top-0;
+}
+.navbar.scrolled {
+  @apply bg-[color:var(--green)] transition-[background-color] duration-[0.3s] ease-[ease];
+}
+.navbar.scrolled .nav-link-btn.active {
+  @apply bg-[color:var(--red)];
+}
+.nav-link-btn {
+  @apply text-sm tracking-wide bg-[color:var(--gold)] text-[white] no-underline transition-all duration-[0.3s] ease-[ease] px-5 py-1.5 rounded-[20px] hover:bg-[color:var(--red)];
+}
+.nav-link-btn.active {
+  @apply bg-[color:var(--green)];
+}
+.contact-nav-link a {
+  @apply text-base border-[length:var(--black)] border-black text-[color:var(--black)] no-underline transition-all duration-[0.3s] ease-[ease] px-5 py-2.5 rounded-[20px] border-[solid] hover:bg-[color:var(--red)] hover:border-[length:var(--red)] hover:text-[white];
+}
+.navbar.scrolled .contact-nav-link a {
+  @apply border-[length:var(--white)] border-white bg-[color:var(--green)] text-[color:var(--white)] transition-[background-color] duration-[0.3s] ease-[ease] border-[solid] hover:bg-[color:var(--red)] hover:border-[length:var(--red)] hover:text-[white] hover:border-white;
+}
+.contact-btn.active {
+  @apply bg-[color:var(--black)] text-white;
+}
+
+/* loading */
+@keyframes loader-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(0.5); opacity: 0.5; }
+}
+
+.animate-loader-dot {
+  animation: loader-dot 1s infinite ease-in-out;
+}
+
+/* footer code */
+.flag-container {
+  @apply w-full h-[300px] relative flex justify-center items-center;
+  background: linear-gradient(
+    to bottom,
+    var(--gold) 25%,
+    var(--green) 25% 50%,
+    var(--red) 50% 75%,
+    var(--black) 75% 100%
+  );
+}
+.footer-overlay-text {
+  @apply  w-[90%] max-w-[1200px] text-[color:var(--white)] font-bold relative z-[2] flex-wrap mt-5;
+}
+.footer-overlay-text h2 {
+  @apply text-[1.5rem] md:text-[3rem] font-semibold;
+}
+.social-input-group {
+  @apply flex items-center gap-2.5 flex-wrap;
+}
+.social-icons {
+  @apply flex gap-2.5 md:text-2xl text-sm;
+}
+.social-icons i {
+  @apply text-[color:var(--white)] border border-solid border-amber-50 transition-[0.3s] p-2.5 rounded-[50%] hover:text-[color:var(--white)];
+}
+.social-icons i:hover {
+  @apply text-[color:var(--red)];
+  background: var(--white);
+}
+input[type="email"] {
+  @apply rounded-[10px] p-2.5 border-[none];
+  background: var(--white);
+  color: var(--color-gray-500);
+}
+.footer-btn {
+  @apply bg-[color:var(--green)] text-[color:var(--white)] rounded-[20px] transition-[0.3s] hover:bg-[color:var(--gold)] cursor-pointer px-[15px] py-2.5 border-[none];
+}
+.resources {
+  @apply text-[color:var(--white)] ml-auto;
+}
+.resources i {
+  @apply text-[color:var(--red)] transition-[0.3s] p-2.5 rounded-[50%];
+  background: var(--white);
+}
+.resources i:hover {
+  background: var(--black);
+}
+.resources h5 {
+  @apply mb-2;
+}
+.resources ul {
+  @apply m-0 p-0;
+  list-style: none;
+}
+.resources ul li {
+  @apply mb-2;
+}
+.resources li:hover{
+  @apply text-[color:var(--red)] transition-[0.3s] p-1 rounded-[50%];
+}
+.resources ul li a {
+  @apply no-underline text-[color:var(--white)] flex items-center gap-[5px];
+}
+.resources ul li a i {
+  @apply md:text-[0.8rem] text-[0.5rem];
+}
+.footer-bottom-bar{
+  @apply absolute bottom-2 w-full flex flex-col md:flex-row justify-between items-center text-sm space-y-1;
+  color: var(--color-gray-500);
+}
+/* section code */
+.section-title h2 {
+  @apply text-[2.5rem] font-semibold capitalize;
+}
+.section-btn{
+  @apply flex md:flex-row gap-2 my-5;
+}
+.section-btn-icon {
+  @apply w-[60px] h-[50px] border-[1px] border-black 
+         transition-transform duration-[300ms] ease-[ease] 
+         p-2 rounded-[50%] border-solid 
+         hover:bg-[color:var(--green)] hover:scale-110;
+}
+.section-btn img {
+  @apply w-full h-full object-contain;
+}
+.red-gold-btn {
+  @apply relative bg-[color:var(--red)] border border-[color:var(--gold)] text-sm no-underline transition-all duration-[0.3s] ease-[ease] w-full text-left text-[color:var(--white)] px-[25px] py-[15px] rounded-[100px] border-solid hover:bg-[color:var(--gold)];
+}
+.red-gold-btn a {
+  @apply no-underline text-[color:var(--white)];
+}
+.red-gold-btn span {
+  @apply absolute -translate-y-2/4 text-xl right-5 top-2/4;
+  /* distance from right edge */
+}
+.gold-green-btn {
+  @apply relative bg-[color:var(--gold)] border border-[color:var(--gold)] text-sm no-underline transition-all duration-[0.3s] ease-[ease] w-full text-left text-[color:var(--white)] px-[15px] py-[10px] rounded-[100px] border-solid hover:bg-[color:var(--green)] hover:border-[color:var(--green)];
+}
+.gold-green-btn a {
+  @apply no-underline text-[color:var(--white)];
+}
+.gold-green-btn span {
+  @apply absolute -translate-y-2/4 text-xl right-5 top-2/4;
+  /* distance from right edge */
+}
+.gold-red-btn {
+  @apply relative bg-[color:var(--gold)] border border-[color:var(--gold)] text-sm no-underline transition-all duration-[0.3s] ease-[ease] w-full text-left text-[color:var(--white)] px-[15px] py-[10px] rounded-[100px] border-solid hover:bg-[color:var(--red)] hover:border-[color:var(--red)];
+}
+.gold-red-btn a {
+  @apply no-underline text-[color:var(--white)];
+}
+.gold-red-btn span {
+  @apply absolute -translate-y-2/4 text-xl right-5 top-2/4;
+  /* distance from right edge */
+}
+.green-red-btn {
+  @apply relative bg-[color:var(--green)] border border-[color:var(--green)] text-sm no-underline transition-all duration-[0.3s] ease-[ease] w-full text-left text-[color:var(--white)] px-[15px] py-[10px] rounded-[100px] border-solid hover:bg-[color:var(--red)] hover:border-[color:var(--red)];
+}
+.green-red-btn a {
+  @apply no-underline text-[color:var(--white)];
+}
+.green-red-btn span {
+  @apply absolute -translate-y-2/4 text-xl right-5 top-2/4;
+  /* distance from right edge */
+}
+/* hero section */
+.hero {
+  @apply flex flex-col md:flex-row w-full md:h-screen;
+}
+.news-hero{
+  @apply w-full md:h-screen;
+}
+.news-carousel-item{
+  @apply flex flex-col md:flex-row w-full h-[60vh] md:h-[85vh];
+}
+.news-carousel-grid{
+  @apply grid grid-cols-2 w-full gap-4;
+}
+.news-carousel-slice{
+  @apply flex h-full mx-10;
+}
+
+.hero-slice {
+  @apply w-full md:w-1/2 h-[60vh] md:h-[85vh] mx-10;
+}
+.hero-slice.frame, .news-carousel-slice.frame {
+  @apply bg-[color:var(--green)] rounded-xl flex items-center justify-center overflow-hidden h-[85vh] ;
+}
+.hero-slice.frame img, .news-carousel-slice.frame img {
+  @apply w-full h-full object-cover;
+}
+.hero-content{
+  @apply  mt-[100px];
+}
+.hero-text h1 {
+  @apply text-5xl font-semibold text-[color:var(--black)] uppercase m-0;
+}
+.hero-text p {
+  @apply w-4/5 mx-0 my-5;
+}
+.hero-tags {
+  @apply flex flex-col gap-[5px] relative md:absolute md:bottom-[10%] mt-2;
+}
+.hero-tag-row {
+  @apply flex items-center gap-2.5;
+}
+.hero-tag-icon {
+  @apply w-[50px] h-[50px] border-[length:var(--black)] border-black transition-transform duration-[0.3s] ease-[ease] p-2.5 rounded-[50%] border-[solid] hover:bg-[color:var(--gold)] hover:scale-110;
+}
+.hero-tag-icon img {
+  @apply w-full h-full object-contain;
+}
+.hero-tag {
+  @apply items-center justify-center leading-none text-sm text-center shadow-[0px_4px_6px_rgba(176,171,171,0.1)] transition-transform duration-[0.3s] ease-[ease] cursor-pointer px-4 py-3 rounded-[100px] hover:scale-110;
+}
+
+@property --_x {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 0px;
+}
+figure {
+  @apply grid h-[85vh] text-[40px] transition-[--\_x] duration-[0.5s] cursor-pointer rounded-[var(--r)] m-0;
+  --w: 620px;
+  --r: 1em;
+  /* radius */
+  place-items: end end;
+}
+figure > * {
+  grid-area: 1/1;
+}
+figure:hover {
+  --_x: calc(var(--w) - 3 * var(--r) - 0.7lh);
+}
+figure .hero-section {
+  @apply w-[var(--w)] h-full bg-[#68D362] aspect-[1] rounded-[var(--r)];
+  --_m: / calc(2 * var(--r)) calc(2 * var(--r))
+    radial-gradient(#000 69%, #0000 72%);
+  --_g: conic-gradient(
+    from 90deg at calc(100% - var(--r)) calc(100% - var(--r)),
+    #0000 25%,
+    #000 0
+  );
+  --_d: (1lh + var(--r));
+  mask: calc(100% - var(--_d) - var(--_x)) 100% var(--_m),
+    100% calc(100% - var(--_d)) var(--_m),
+    radial-gradient(1lh at 100% 100%, #0000 99%, #000 calc(100% + 1px))
+      calc(-1 * var(--r) - var(--_x)) calc(-1 * var(--r)),
+    var(--_g) calc(-1 * var(--_d) - var(--_x)) 0,
+    var(--_g) 0 calc(-1 * var(--_d));
+  mask-repeat: no-repeat;
+}
+figure figcaption {
+  @apply h-[1.7lh] w-[calc(1.7lh_+_var(--\_x))] box-border overflow-hidden text-white flex items-center;
+  translate: calc(0.8lh - var(--r)) calc(0.8lh - var(--r));
+  background: var(--black);
+  border-inline: calc(0.8lh - 0.8ch) solid #0000;
+  clip-path: inset(5px round 1.7lh);
+}
+figure:hover figcaption {
+  @apply bg-[color:var(--red)];
+}
+.figcaption-icon {
+  @apply text-[2rem] ml-2.5;
+}
+.caption-text {
+  @apply opacity-0 max-w-0 transition-opacity duration-[0.5s,max-width] delay-[0.5s] ml-5;
+  white-space: wrap;
+}
+figure:hover .caption-text {
+  @apply opacity-100 max-w-[500px];
+}
+.caption-text .name {
+  @apply text-base m-0;
+}
+.caption-text .quote {
+  @apply italic text-[0.8rem] w-full m-0;
+}
+.yellow-shape {
+  @apply absolute w-full h-full z-[-2] left-[30%] top-0;
+}
+.red-circle {
+  @apply absolute w-3/5 h-3/5 z-[-1] left-[55%] top-0;
+}
+.hero-image {
+  @apply w-full h-full z-0;
+}
+.hero-image img {
+  @apply w-full h-full object-cover;
+}
+
+/* index about-us */
+.about-us {
+  @apply mx-10 my-[50px];
+}
+.about-us-text h3 {
+  @apply italic font-extralight text-[2rem] text-center max-w-[900px] mx-auto my-0;
+}
+.about-us-items {
+  @apply mx-0 my-[50px];
+}
+.about-us-item {
+  @apply text-center max-w-[250px] h-[250px] shadow-[0px_4px_6px_rgba(176,171,171,0.1)] transition-transform duration-[0.3s] ease-[ease] transition-[background-color] duration-[0.3s] ease-[ease] mx-auto my-0 px-5 py-2.5 rounded-[25px] hover:bg-[color:var(--lightgrey)] hover:scale-110;
+}
+.about-us-item .about-us-icon {
+  @apply w-[60px] h-[60px] flex items-center justify-center mt-0 mb-2.5 mx-auto rounded-[50%];
+}
+.about-us-item .about-us-icon img {
+  @apply w-[30px] h-[30px];
+}
+.about-us-item h3 {
+  @apply text-base font-semibold mb-[5px];
+}
+.about-us-item p {
+  @apply text-[0.9rem] text-[color:var(--darkgrey)];
+}
+/* faq section */
+.faq-section {
+  @apply mx-10 my-[50px];
+}
+
+.faq-section-grid {
+  @apply flex flex-col gap-10 md:flex-row md:items-start;
+}
+
+.faq-section.title {
+  @apply flex flex-col justify-between w-full md:w-2/5;
+}
+
+.faq-section.title .section-title {
+  @apply mb-6 md:mb-10 text-center md:text-left;
+}
+faq-section.title .section-btn {
+  @apply mt-auto flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4;
+}
+
+.faq-section-content {
+  @apply w-full md:flex-grow;
+}
+
+/* tournaments index */
+.tournaments {
+  @apply mx-10 my-[70px];
+}
+.tournaments-content{
+  @apply mt-10;
+}
+.tournament-card {
+  @apply bg-white border-[length:var(--black)] p-5 rounded-[25px] border-[solid] shadow-lg mb-4 hover:scale-105 ease-[ease] transition-transform duration-[0.3s];
+}
+.tournament-card-header h3 {
+  @apply text-[2rem] font-semibold capitalize text-left block leading-[1.2] min-h-[calc(1.2em_*_2)] whitespace-normal relative m-0 after:content-["\A"] after:whitespace-pre;
+  word-break: break-word;
+}
+.tournament-tag {
+  @apply bg-[#e74c3c] text-white items-center justify-center text-center py-2 my-2 rounded-[100px];
+  /* red shade */
+}
+.tournament-tag--gold {
+  @apply bg-[#ffc711] text-white items-center justify-center text-center py-2 my-2 rounded-[100px];
+}
+.tournament-card-detail {
+  @apply flex items-start border-black border-2 rounded-full my-2 w-full;
+}
+.tournament-card-icon {
+  @apply w-10 h-10 flex items-center justify-center mx-2 my-2 self-center rounded-full transition-transform duration-300 ease-in-out p-2;
+}
+.tournament-card-icon img {
+  @apply w-full h-full object-contain;
+}
+.tournament-card-text {
+  @apply px-3 py-2 text-base break-words leading-snug items-center justify-center;
+}
+
+.custom-table{
+  @apply border-separate border-spacing-0 border-2 border-black border-solid rounded-[15px] overflow-hidden w-full text-start text-[0.7rem];
+}
+.player-table {
+  @apply border-separate border-spacing-0 border border-black rounded-[15px] overflow-hidden w-full text-start;
+}
+
+.player-table th,
+.player-table td {
+  @apply border border-black p-1 text-sm;
+}
+
+.player-table tr:not(:last-child) {
+  @apply border-b border-black;
+}
+
+/* First column: bold and top-aligned */
+.custom-table td:first-child {
+  @apply font-normal align-middle;
+}
+/* Right border on all but last column */
+.custom-table td:not(:last-child) {
+  @apply border-r-2 border-black border-solid;
+}
+
+/* Bottom border on all but last row */
+.custom-table tr:not(:last-child) td {
+  @apply border-b border-black border-solid;
+}
+
+
+.tournament-footer {
+  @apply flex flex-col md:flex-row justify-center items-center gap-4 mt-10;
+}
+
+.tournament-footer-item {
+  @apply flex justify-center items-center text-white text-center 
+         mx-0 my-2.5 px-6 rounded-[100px];
+  height: 120px; /* same height */
+  width: 200px;  /* same width */
+}
+
+.tournament-footer-item p {
+  @apply text-3xl font-semibold m-0;
+}
+
+.tournament-footer-item i {
+  @apply text-[color:var(--white)] transition duration-300 
+         p-2.5 rounded-full text-5xl cursor-pointer;
+}
+
+.tournament-footer-item img {
+  @apply w-32 h-32 object-contain;
+}
+/* player-card */
+.player-profiles {
+  @apply mx-10 my-[50px];
+}
+
+.player-profile-grid {
+  @apply flex flex-col gap-6 md:flex-row md:items-start;
+}
+
+.player-profile.title {
+  @apply flex flex-col justify-between w-full md:w-1/4 p-4 md:p-6;
+}
+
+.player-profile.title .section-title {
+  @apply mb-6 md:mb-10 text-center md:text-left;
+}
+
+.player-profile.title .section-btn {
+  @apply mt-auto flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4;
+}
+
+.player-profile-slider {
+  @apply w-full md:flex-grow;
+}
+.tns-nav {
+  @apply flex justify-center gap-2 mt-4;
+}
+
+.tns-nav > button {
+  @apply w-2 h-2 rounded-full bg-[#ffc711];
+}
+
+.tns-nav > button.tns-nav-active {
+  @apply bg-[#e74c3c];
+}   
+.player-profile-card {
+  @apply relative w-full h-full rounded-xl overflow-hidden shadow-lg mx-4 md:mx-5;
+  background: var(--red);
+}
+
+
+.player-profile-card img {
+  @apply w-full h-full object-fill;
+  display: block;
+}
+
+.player-profile-card .content {
+  @apply absolute bottom-0 left-0 w-full px-2 pb-2;
+}
+
+.player-profile-card .btn {
+  @apply text-white flex justify-between items-center px-3 py-2 rounded-[100px];
+  background: var(--green);
+}
+
+.player-profile-card .name {
+  @apply text-sm font-semibold;
+}
+
+.player-profile-card .icon {
+  @apply text-white text-lg;
+}
+/* player info table */
+.hero-table {
+  @apply border-separate border-spacing-0 border-2 border-black border-solid rounded-[15px] overflow-hidden w-full text-center my-10;
+}
+
+/* First column: bold and top-aligned */
+.hero-table td:first-child {
+  @apply font-normal align-top;
+}
+/* Right border on all but last column */
+.hero-table td:not(:last-child) {
+  @apply border-r-2 border-black border-solid;
+}
+
+/* Bottom border on all but last row */
+.hero-table tr:not(:last-child) td {
+  @apply border-b border-black border-solid;
+}
+
+/* General cell spacing + right align last column */
+.custom-table td {
+  @apply px-1 py-1 last:text-right;
+}
+/* news update */
+.news-updates{
+  @apply mx-10 my-[50px];
+}
+.news-updates-grid{
+  @apply grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4
+}
+.news-update-main{
+  @apply md:col-span-2 row-span-2;
+}
+.post-headline{
+  @apply mt-2 font-semibold px-2;
+}
+/* pre footer */
+.pre-footer .frame {
+  @apply m-4 md:m-10 lg:m-16 rounded-xl text-white p-6 sm:p-8 md:p-10 flex flex-col md:flex-row gap-6 mr-10;
+}
+
+.pre-footer .frame .text {
+  @apply flex flex-col text-left px-4 md:px-10 pt-6 md:pt-10;
+}
+
+.pre-footer .frame .text h2 {
+  @apply uppercase font-bold text-xl md:text-4xl mb-4;
+}
+
+.pre-footer .frame p {
+  @apply font-extralight text-[color:var(--lightgrey)] text-base md:text-[1rem];
+}
+
+.pre-footer .frame .box {
+  @apply rounded-xl text-white p-6 sm:p-8 md:p-10 text-left;
+}
+
+.pre-footer .frame .box h4 {
+  @apply uppercase font-semibold text-lg md:text-xl;
+}
+
+.pre-footer .frame .box p {
+  @apply text-sm md:text-[0.8rem];
+}
+
+/* form */
+.form-label {
+  @apply text-[color:var(--white)] text-sm mb-2 my-3;
+}
+.form-input{
+  @apply w-full p-2.5 bg-white border-[1px] border-[color:var(--darkgrey)] rounded-[10px] text-[color:var(--black)] transition-all duration-[0.3s] ease-[ease] focus:outline-none focus:border-[color:var(--green)];
+}
+
+
+/* Admin */
+/* admin-nav */
+.admin-nav-link{
+  @apply text-sm tracking-wide text-white no-underline transition-all duration-[0.3s] ease-[ease] flex items-center px-4 py-2 rounded-[20px] hover:bg-[color:var(--white)] hover:text-black;
+}
+.admin-nav-link.active {
+  @apply bg-[color:var(--white)] text-black;
+}
+.admin-nav-link.logout {
+  @apply hover:bg-[color:var(--red)] text-white;
+}
+
+/* events-admin */
+.link-grid {
+  @apply grid gap-4 
+    grid-cols-1         
+    sm:grid-cols-2      
+    md:grid-cols-3      
+    lg:grid-cols-4;     
+}
+
+.link-grid-item{
+  @apply bg-green-100 text-gray-800 p-4 rounded-xl flex items-center justify-between h-full shadow-sm transition-transform duration-[0.3s] ease-[ease] hover:scale-105;
+}
+.link-grid-item-2{
+  @apply bg-green-600 text-white p-4 rounded-xl flex items-center justify-between h-full shadow-sm transition-transform duration-[0.3s] ease-[ease] hover:scale-105;
+}
+.link-grid-item-2 .content{
+  @apply w-2/3;
+}
+.link-grid-number{
+    @apply text-white rounded-full flex items-center justify-center px-4 py-2 text-6xl font-bold text-center;
+}
+.link-grid-icon {
+  @apply bg-green-500 text-white w-[50px] h-[50px] rounded-full flex items-center justify-center p-2;
+}
+.grid-link-btn{
+  @apply text-xs bg-green-700 mt-4 p-2 px-3 rounded-[20px] text-white w-full no-underline text-center items-center justify-center transition-all duration-[0.3s] ease-[ease];
+}
+.grid-link-btn a{
+  @apply text-white;
+}
+.grid-link-btn:hover {
+  @apply bg-green-800;
+}
+.frame-wrapper{
+  @apply overflow-x-auto rounded-xl bg-white shadow text-black p-4 m-2;
+}
+ .frame-wrapper .form-label {
+  @apply text-[color:var(--black)] text-sm mb-2 my-3;
+}
+.frame-dot{
+  @apply w-5 h-5 rounded-full inline-block mt-4 mb-5;
+}
+@layer utilities {
+  .inverted-radius {
+    --r: 20px; /* radius */
+    --s: 20px; /* inner curve size */
+    --x: 250px;
+    --y: 25px;
+
+    border-radius: var(--r);
+
+    --_m: /calc(2*var(--r)) calc(2*var(--r)) radial-gradient(#000 70%, #0000 72%);
+    --_g: conic-gradient(at calc(100% - var(--r)) var(--r), #0000 25%, #000 0);
+    --_d: calc(var(--s) + var(--r));
+
+    mask:
+      calc(100% - var(--_d) - var(--x)) 0 var(--_m),
+      100% calc(var(--_d) + var(--y)) var(--_m),
+      radial-gradient(var(--s) at 100% 0, #0000 99%, #000 calc(100% + 1px))
+        calc(-1 * var(--r) - var(--x)) calc(var(--r) + var(--y)),
+      var(--_g) calc(-1 * var(--_d) - var(--x)) 0,
+      var(--_g) 0 calc(var(--_d) + var(--y));
+    mask-repeat: no-repeat;
+  }
+
+  /* HTML: <div class="inverted-radius"></div> */
+.bottom-right-inverted-radius {
+    --r: 20px; /* the radius */
+    --s: 40px; /* size of inner curve */
+    --x: 400px; 
+    --y: 100px; 
+    
+    background: #3FB8AF;
+    border-radius: var(--r);
+    --_m:/calc(2*var(--r)) calc(2*var(--r)) radial-gradient(#000 70%,#0000 72%);
+    --_g:conic-gradient(from 180deg at var(--r) calc(100% - var(--r)),#0000 25%,#000 0);
+    --_d:(var(--s) + var(--r));
+    mask:
+      calc(var(--_d) + var(--x)) 100% var(--_m),
+      0 calc(100% - var(--_d) - var(--y)) var(--_m),
+      radial-gradient(var(--s) at 0 100%,#0000 99%,#000 calc(100% + 1px)) 
+      calc(var(--r) + var(--x)) calc(-1*var(--r) - var(--y)),
+      var(--_g) calc(var(--_d) + var(--x)) 0,
+      var(--_g) 0 calc(-1*var(--_d) - var(--y));
+    mask-repeat: no-repeat;
+  }
+}
+.bottom-right-inverted-radius{
+  @apply h-[60vh] md:h-[85vh] w-full pb-10 mb-4;
+}
+.bottom-right-inverted-radius img{
+  @apply w-full h-full object-cover;
+}
+.inverted-radius {
+  @apply  bg-green-100 h-auto w-full pb-10;
+}
+.inverted-radius-content{
+  @apply px-4;
+}
+.inverted-corner-btn {
+  @apply  bg-green-500 text-white px-4 py-2 rounded-[20px] flex items-center gap-2;
+  transition: background-color 0.3s ease;
+}
+.inverted-corner-btn:hover {
+  @apply bg-green-600;
+}
+/* admin table */
+
+.filter-tab{
+  @apply text-xs bg-green-700 mt-4 p-2 px-3 rounded-[20px] text-white text-center items-center justify-center;
+}
+.filter-tab:hover {
+  @apply bg-green-800;
+}
+.active-tab {
+  @apply bg-green-500 text-white; 
+}
+.search-tab{
+  @apply relative items-center mt-3;
+}
+.search-tab input {
+  @apply pl-10 pr-4 py-2 border rounded-full shadow-sm text-sm w-80 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500;
+}
+.search-icon{
+  @apply absolute left-3 top-1/2 -translate-y-1/2 text-green-500;
+}
+.table-wrapper {
+  @apply overflow-x-auto rounded-xl bg-white shadow text-black;
+}
+.admin-table {
+  @apply min-w-full text-[1rem] text-left;
+}
+.admin-table thead{
+  @apply bg-white border-b border-gray-200;
+}
+.admin-table thead tr {
+  @apply text-gray-500;
+}
+.admin-table th {
+  @apply p-4;
+}
+.admin-table tbody tr {
+  @apply border-b border-gray-200 hover:bg-yellow-50;
+}
+.admin-table td {
+  @apply p-4;
+}
+/* admin.dashboard-table */
+.dashboard-table {
+  @apply min-w-full text-[0.9rem] text-left;
+}
+.dashboard-table thead{
+  @apply bg-white border-b border-gray-200;
+}
+.dashboard-table thead tr {
+  @apply text-gray-500;
+}
+.dashboard-table th {
+  @apply p-2;
+}
+.dashboard-table tbody tr {
+  @apply border-b border-gray-200 hover:bg-yellow-50;
+}
+.dashboard-table td {
+  @apply p-2;
+}
+.note-modal-backdrop {
+  @apply z-[1040] fixed;
+}
+.note-modal {
+  @apply z-[1050] fixed;
+}
+.note-popover {
+  @apply z-[1060];
+}
+
+/* Blog Post */
+.headline {
+  @apply my-4 w-full flex flex-col md:flex-row justify-between;
+}
+
+.headline-content {
+  @apply mb-4 md:mb-0; /* add bottom margin on small screens, remove on md */
+}
+
+.headline h2 {
+  @apply text-[2.5rem] font-semibold capitalize;
+}
+
+.headline-tags {
+  @apply flex md:flex-row md:items-end md:justify-end w-full md:w-auto;
+  gap: 0.5rem; /* some spacing between tag rows */
+}
+
+form .trash-btn{
+  @apply bg-red-600 text-white;
+}
+
+.round_score_bg {
+  @apply m-0 px-1 font-bold rounded-[100px] ;
+}
+
+.hole-in-one {
+  @apply bg-[#ffdf00];
+}
+
+.eagle {
+  @apply bg-[#ffdf00] text-white;
+}
+
+.birdie {
+  @apply bg-[#B00A08] text-white;
+}
+
+.par {
+  @apply bg-green-500 text-white;
+}
+
+.bogey {
+  @apply bg-[#6F7378] text-white;
+}
+
+.double_bogey {
+  @apply bg-[#0C0404] text-white;
+}
